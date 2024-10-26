@@ -1,3 +1,3 @@
 # chaos-factory-of-the-damned
 
-A game made with JavaScript.
+A game made with Bun, Vite and JavaScript.

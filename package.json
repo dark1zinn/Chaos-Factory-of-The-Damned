@@ -3,5 +3,12 @@
   "private": true,
   "version": "0.0.1-prot",
   "type": "module",
-  "devDependencies": {}
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "preview": "bunx --bun vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.9"
+  }
 }
