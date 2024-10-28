@@ -2,7 +2,7 @@ import Movement from "./playerMovement"
 import inputListener from "./inputListener"
 
 const spriteSheet = new Image()
-spriteSheet.src = './assets/Transparent/Tilemap/tilemap.png'
+spriteSheet.src = '../assets/Transparent/Tilemap/tilemap.png'
 
 export default class Player {
     constructor(x, y) {
