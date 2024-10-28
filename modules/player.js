@@ -15,8 +15,8 @@ export default class Player {
         this.height = 8;
         this.health = 10;
         this.speed = 5;
-        this.velocityY = 0; // Velocidade vertical para o pulo
-        this.jumping = false; // Flag para indicar se o jogador está pulando
+        this.velocityY = 0; 
+        this.jumping = false;
         this.movement = new Movement(this)
     }
   
