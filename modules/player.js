@@ -1,21 +1,23 @@
+import Movement from "./playerMovement"
+import inputListener from "./inputListener"
 
-
-// spritesheet is whithin ./assets/transparent/tilemap/tilemap_packed.png
 const spriteSheet = new Image()
 spriteSheet.src = './assets/Transparent/Tilemap/tilemap.png'
 
 export default class Player {
-    constructor(x, y, character) {
+    constructor(x, y) {
         this.spriteSheet = spriteSheet
-        this.character = character ? character : 1
+        //this.character = character ? character : 1
+        this.id = 0
         this.x = x;
         this.y = y;
-        this.width = 32;
-        this.height = 32;
+        this.width = 8;
+        this.height = 8;
         this.health = 10;
         this.speed = 5;
         this.velocityY = 0; // Velocidade vertical para o pulo
         this.jumping = false; // Flag para indicar se o jogador está pulando
+        this.movement = new Movement(this)
     }
   
     jump() {
@@ -38,7 +40,11 @@ export default class Player {
     }
   
     draw(ctx) {
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.spriteSheet, 8*8, 8, this.width, this.height, this.x, this.y, this.width, this.height);
+    }
+
+    update() {
+        this.movement.handleInput(inputListener())
     }
 }
   

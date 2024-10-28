@@ -1,7 +1,10 @@
-class Gravity {
-    constructor(entities, gravity) {
+
+
+export default class Gravity {
+    constructor(entities, canvas, gravity) {
         this.entities = entities; // Array com as entidades afetadas pela gravidade
         this.gravity = gravity; // Força da gravidade
+        this.canvas = canvas
     }
 
     update() {
@@ -10,8 +13,8 @@ class Gravity {
             entity.y += entity.velocityY;
 
             // Verificar colisão com o chão (implementar conforme sua lógica de jogo)
-            if (entity.y + entity.height >= canvas.height) {
-                entity.y = canvas.height - entity.height;
+            if (entity.y + entity.height >= this.canvas.height) {
+                entity.y = this.canvas.height - entity.height;
                 entity.velocityY = 0;
                 entity.jumping = false;
             }
