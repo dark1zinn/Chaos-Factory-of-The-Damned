@@ -16,7 +16,8 @@ export default class EntityManager {
     }
 
     update() {
-        this.entities.forEach(entity => entity.update());
+        console.log(this.entities)
+        this.entities.forEach(entity => {if(this.entity.type != 'Obstacle'){entity.update()}});
     }
 
     draw(ctx) {

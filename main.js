@@ -1,5 +1,7 @@
 import Game from './modules/game.js'
 
+const depurer = document.getElementById('depurer')
+depurer.style.display = 'none'
 const canvas = document.getElementById('canvas1')
 const ctx = canvas.getContext('2d')
 canvas.width = window.innerWidth
@@ -14,7 +16,5 @@ console.log(window.innerWidth+" - "+window.innerHeight)
 const game = new Game(canvas)
 game.Loop()
 
-const depurer = document.getElementById('depurer')
-game.Depurer(depurer, false)
 
 

@@ -1,31 +1,32 @@
 import Movement from "./playerMovement"
-import inputListener from "./inputListener"
+import BoundingBox from "./physics/collisions/boundingBox"
 
 const spriteSheet = new Image()
-spriteSheet.src = './assets/Transparent/Tilemap/tilemap.png'
+spriteSheet.src = './assets/Transparent/Tilemap/tilemap_packed.png'
 
 export default class Player {
     constructor(x, y, eventManager) {
         this.spriteSheet = spriteSheet
         //this.character = character ? character : 1
         this.id = 0
-        this.x = x;
-        this.y = y;
-        this.width = 8;
-        this.height = 8;
+        this.type = 'player'
+        this.name = 'player'
+        this.width = 32;
+        this.height = 32;
+        this.x = x+(this.width/2);
+        this.y = y + (this.height / 2);
+        this.boundingBox = new BoundingBox(x, y, this.width, this.height)
+        this.spriteWidth = 8;
+        this.spriteHeight = 8;
         this.health = 10;
-        this.speed = 5;
-        this.velocityY = 0; 
-        this.jumping = false;
-        this.movement = new Movement(this)
+        this.speed = 4;
+        this.jumpHeight = -3; // Ajuste o valor para controlar a altura do pulo
         this.eventManager = eventManager
+        this.movement = new Movement(this, this.eventManager)
     }
   
     jump() {
-        if (!this.jumping) {
-            this.velocityY = -15; // Ajuste o valor para controlar a altura do pulo
-            this.jumping = true;
-        }
+        this.y += this.jumpHeight
     }
   
     moveDown() {
@@ -41,11 +42,26 @@ export default class Player {
     }
   
     draw(ctx) {
-        ctx.drawImage(this.spriteSheet, 8, 8*7, this.width, this.height, this.x, this.y, 32, 32);
+        ctx.drawImage(this.spriteSheet, this.spriteWidth, this.spriteHeight*6, this.spriteWidth, this.spriteHeight, this.x-(this.width/2), this.y-(this.height/2), this.width, this.height);
+    }
+
+    handleCollision(object) {
+        switch (object.type) {
+            case (enemy): {
+                this.health -= object.attack
+                break
+            }
+            case (platform): {
+                if (this.y > object.y) { console.error('player went through the floor') }
+                break
+            }
+        }
     }
 
     update() {
-        this.movement.handleInput(inputListener(), this.eventManager)
+        this.movement.handleInput()
+        //const pos = { "X":`${this.x}`, "Y":`${this.y}` }
+        //console.log(pos)
     }
 }
   
