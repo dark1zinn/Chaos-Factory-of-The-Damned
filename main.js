@@ -15,6 +15,6 @@ const game = new Game(canvas)
 game.Loop()
 
 const depurer = document.getElementById('depurer')
-game.Depurer(depurer)
+game.Depurer(depurer, false)
 
 

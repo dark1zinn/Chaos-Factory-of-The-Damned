@@ -5,7 +5,7 @@ const spriteSheet = new Image()
 spriteSheet.src = './assets/Transparent/Tilemap/tilemap.png'
 
 export default class Player {
-    constructor(x, y) {
+    constructor(x, y, eventManager) {
         this.spriteSheet = spriteSheet
         //this.character = character ? character : 1
         this.id = 0
@@ -18,6 +18,7 @@ export default class Player {
         this.velocityY = 0; 
         this.jumping = false;
         this.movement = new Movement(this)
+        this.eventManager = eventManager
     }
   
     jump() {
@@ -40,11 +41,11 @@ export default class Player {
     }
   
     draw(ctx) {
-        ctx.drawImage(this.spriteSheet, 8*8, 8, this.width, this.height, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.spriteSheet, 8, 8*7, this.width, this.height, this.x, this.y, 32, 32);
     }
 
     update() {
-        this.movement.handleInput(inputListener())
+        this.movement.handleInput(inputListener(), this.eventManager)
     }
 }
   

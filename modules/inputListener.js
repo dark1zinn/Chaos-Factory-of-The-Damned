@@ -10,12 +10,6 @@ export default function inputListener() {
     document.addEventListener('keyup', (event) => {
         keys[event.key] = false;
     });
-    document.addEventListener('keyleft', (event) => {
-        keys[event.key] = false;
-    });
-    document.addEventListener('keyright', (event) => {
-        keys[event.key] = false;
-    });
 
     return keys
 }

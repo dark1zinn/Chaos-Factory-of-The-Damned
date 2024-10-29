@@ -1,4 +1,7 @@
 body {
+    background-color: hsl(0, 0%, 10%);
+    color: hsl(180, 100%, 97%);
+
     margin: 0px;
     padding: 0px;
 
@@ -6,11 +9,17 @@ body {
     height: 99vh;
 
     div {
+        display: inline-block;
+        width: 70%;
+        position: fixed;
+        background-color: hsla(0, 0%, 45%, 0.363);
         height: 150px;
         padding: 15px;
+        overflow: scroll;
     }
 
     canvas {
+        position: fixed;
         width: 100%;
         height: 100%;
     }
