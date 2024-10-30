@@ -6,7 +6,7 @@ A game made with Bun, Vite and JavaScript.
 
 - player render (draw) ✅
 - correctly apply/implement player movement ✅
-- add colision detector
+- add colision detector ( add filter to entityManager so it can separate the objects on different arrays so only necessarie objects will suffer update )
 - polish player movement
 - implement Events
 - add logger/console for depuration
@@ -14,4 +14,6 @@ A game made with Bun, Vite and JavaScript.
 
 ### current errors/difficulties:
 
-- foreach not working cause an undefined property on <a href='./modules/entityManager.js'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error.
+- ...
+
+- foreach not working cause an undefined property on <a href='./modules/entityManager.js'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error. FIXED

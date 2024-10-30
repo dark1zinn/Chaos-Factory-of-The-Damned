@@ -1,0 +1,36 @@
+import Object from "./object";
+
+export default class Entity extends Object {
+    constructor(x, y, role, name, tileSheet, size, health, attack, speed, jumpForce) {
+        super('entity', name, x, y, tileSheet, size, size)
+
+        this.id = 0
+        this.role = role
+        this.health = health
+        this.attack = attack
+        this.speed = speed
+        this.jumpForce = -jumpForce
+    }
+
+    Damage(dmg) {
+        if (this.role == 'particle') { return }
+        this.health -= dmg //do better math for this later + add defense for dmg reduction
+        if (this.health <= 0) { GameOver } //to-do GameOver logic
+    }
+
+    jump() {
+        this.y += this.jumpForce
+    }
+
+    moveDown() {
+        this.y += this.speed;
+    }
+
+    moveLeft() {
+        this.x -= this.speed;
+    }
+
+    moveRight() {
+        this.x += this.speed;
+    }
+}

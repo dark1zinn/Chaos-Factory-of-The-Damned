@@ -1,4 +1,4 @@
-import InputManager from "./inputManager";
+import InputManager from "../managers/inputManager";
 
 export default class Movement {
     constructor(player, eventManager) {
@@ -25,7 +25,7 @@ export default class Movement {
             this.player.moveLeft();
         }
         if (keys.d) {
-            this.eventManager.emit('right act', {"X":`${this.player.x}`, "Y":`${this.player.y}`})
+            this.eventManager.emit('right act', { "X": `${this.player.x}`, "Y": `${this.player.y}` })
             this.player.moveRight();
         }
 

@@ -1,4 +1,4 @@
-import BoundingBox from "./physics/collisions/boundingBox";
+import BoundingBox from "../physics/collisions/boundingBox";
 
 export default class Object {
     constructor(type, name, x, y, tileSheet, width, height) {
@@ -7,6 +7,8 @@ export default class Object {
         this.name = name
         this.width = width;
         this.height = height;
+        this.spriteWidth = 8
+        this.spriteHeight = 8
         this.x = x + (this.width / 2);
         this.y = y + (this.height / 2);
         this.tileSheet = new Image()
@@ -16,6 +18,6 @@ export default class Object {
 
     draw(ctx) {
         // object rendering logic
-        ctx.drawImage(this.spriteSheet, this.spriteWidth, this.spriteHeight * 6, this.spriteWidth, this.spriteHeight, this.x - (this.width / 2), this.y - (this.height / 2), this.width, this.height)
+        ctx.drawImage(this.tileSheet, this.spriteWidth, this.spriteHeight * 6, this.spriteWidth, this.spriteHeight, this.x - (this.width / 2), this.y - (this.height / 2), this.width, this.height)
     }
 }

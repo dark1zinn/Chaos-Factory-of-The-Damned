@@ -1,9 +1,9 @@
-import Player from './player.js'
+import Player from './player/player.js'
 import Gravity from './physics/gravity.js'
-import EntityManager from './entityManager.js';
-import EventManager from './eventManager.js';
+import EntityManager from './managers/entityManager.js';
+import EventManager from './managers/eventManager.js';
 import CollisionQuery from './physics/collisions/collisionQuery.js';
-import DirtTile from './objects/obstacle/floor1.js';
+import Spawner from './tools/spawner.js';
 
 export default class Game {
     constructor(canvas) {
@@ -12,14 +12,12 @@ export default class Game {
         this.ctx.imageSmoothingEnabled = false
         this.entityManager = new EntityManager();
         this.eventManager = new EventManager()
+        this.spawner = new Spawner(this.eventManager, this.entityManager)
         this.gravity = new Gravity(this.entityManager.entities, 0.5);  //Issue that causes the player to vanish
-        
+
         // Criar entidades iniciais
-        this.player = new Player((canvas.width/2), (canvas.height/2), this.eventManager);
-        this.entityManager.addEntity(this.player);
-        this.dirt = new DirtTile(100, 400, 32, 32)
-        this.entityManager.addEntity(this.dirt)
-        
+        this.spawner.Spawn('player', 200, 500)
+
         this.collisionQuery = new CollisionQuery(this.canvas, this.player, this.eventManager, this.entityManager.entities)
         requestAnimationFrame(this.Loop.bind(this));
     }
@@ -36,8 +34,9 @@ export default class Game {
 
     Depurer() { //not working
         // Criar o logger
-        const logger = this.eventManager.subscribeAll((data) => { console.log(`Evento: ${eventName}, Dados: ${JSON.stringify(data)}`)})
-        this.eventManager.subscribeAll(logger.logEvent);
+        const logger = this.eventManager.subscribeAll((data) => { console.log(`Evento: ${eventName}, Dados: ${JSON.stringify(data)}`) })
+        return logger
+        //this.eventManager.subscribeAll(logger.logEvent);
         //return depurer.innerHTML = `
         //<span>Depurer console:</span><br><br>
         //<span>${logger}</span>

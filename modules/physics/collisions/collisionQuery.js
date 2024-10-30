@@ -25,7 +25,7 @@ export default class CollisionQuery {
         for (const object of potentialCollisions) {
             if (this.player.boundingBox.isColliding(object)) {
                 // Handle collision
-                if (object.name == 'enemy') { object.handleCollision(this.player) }
+                if (object.role == 'enemy') { object.handleCollision(this.player) }
                 this.player.handleCollision(object)
                 console.log("Colisão com inimigo!");
             }
