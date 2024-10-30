@@ -14,4 +14,4 @@ A game made with Bun, Vite and JavaScript.
 
 ### current errors/difficulties:
 
-- foreach not working cause an undefined property on <a href='./modules/entityManager.js:20:57'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2023-05-22 081246.png'>screenshot</a> of the error.
+- foreach not working cause an undefined property on <a href='./modules/entityManager.js'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error.
