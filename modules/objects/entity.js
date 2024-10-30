@@ -12,10 +12,14 @@ export default class Entity extends Object {
         this.jumpForce = -jumpForce
     }
 
+    update() {
+        //console.log('entity')
+    }
+
     Damage(dmg) {
         if (this.role == 'particle') { return }
         this.health -= dmg //do better math for this later + add defense for dmg reduction
-        if (this.health <= 0) { GameOver } //to-do GameOver logic
+        
     }
 
     jump() {

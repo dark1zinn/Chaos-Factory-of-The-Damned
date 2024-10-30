@@ -9,7 +9,8 @@ export default class Enemy extends Entity {
     handleCollision(object) {
         if (object.type == 'entity') {
             if (object.name == 'player') {
-                object.Damage(this.attack)
+                //object.Damage(this.attack)
+                
             }
         }
     }

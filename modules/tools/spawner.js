@@ -22,7 +22,9 @@ export default class Spawner {
         }
         switch (type) { 
             case ('player'): {
-                this.entityManager.addEntity(new Player(x, y, this.eventManager))
+                const player = new Player(x, y, this.eventManager)
+                this.entityManager.addEntity(player)
+                this.eventManager.emit('spawned player', player)
                 break
             }
             case ('enemy'): {
@@ -30,5 +32,11 @@ export default class Spawner {
                 this.entityManager.addEntity(new Enemy(x, y, name, tileSheet));
             }
         }
+        this.data = null
+    }
+
+    Despawn(id) {
+        this.entityManager.removeEntity(id)
     }
 }
+

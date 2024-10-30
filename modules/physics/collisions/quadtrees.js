@@ -14,7 +14,8 @@ export default class Quadtree {
 
     // Método para inserir um objeto na quadtree
     insert(object) {
-        if (!this.boundary.contains({"X":`${object.x}`, "Y":`${object.y}`})) {
+        if (!this.boundary.contains({ "x": `${object.x}`, "y": `${object.y}` })) {
+            console.log('returned')
             return;
         }
 
@@ -71,7 +72,7 @@ export default class Quadtree {
             return;
         } else if (!this.divided) {
             for (let object of this.objects) {
-                if (range.contains(object.position)) {
+                if (range.intersects(object.boundingBox.box)) {
                     found.push(object);
                 }
             }

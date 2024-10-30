@@ -14,6 +14,6 @@ A game made with Bun, Vite and JavaScript.
 
 ### current errors/difficulties:
 
-- ...
+- box() method of class BoundingBox not providing info correctly at <a href='./modules/physics/collisions/boundingBox.js'>boundingBox.js:22:16</a>, which info is captured by itself for isColliding method at <a href='./modules/physics/collisions/collisionQuery.js'>collisionQuery.js:30:42</a>, theres no error on console.
 
 - foreach not working cause an undefined property on <a href='./modules/entityManager.js'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error. FIXED

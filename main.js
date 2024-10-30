@@ -10,8 +10,8 @@ let CANVAS_WIDTH = canvas.width
 let CANVAS_HEIGHT = canvas.height
 
 //comparison, they should output the same value
-console.log(CANVAS_WIDTH+" - "+CANVAS_HEIGHT)
-console.log(window.innerWidth+" - "+window.innerHeight)
+//console.log(CANVAS_WIDTH+" - "+CANVAS_HEIGHT)
+//console.log(window.innerWidth+" - "+window.innerHeight)
 
 const game = new Game(canvas)
 game.Loop()

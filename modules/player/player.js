@@ -10,12 +10,16 @@ export default class Player extends Entity {
     }
 
     handleCollision(object) {
-        switch (object.type) {
-            case (enemy): {
-                this.health -= object.attack
+        //console.log('player colision')
+        switch (object.role) {
+            case ('enemy'): {
+                if (this.boundingBox.isColliding(object.boundingBox.box)) {
+                    //this.health -= object.attack
+                    //console.log('enemy attacked')
+                }
                 break
             }
-            case (platform): {
+            case ('platform'): {
                 if (this.y > object.y) { console.error('player went through the floor') }
                 break
             }
@@ -23,6 +27,7 @@ export default class Player extends Entity {
     }
 
     update() {
+        if (this.health <= 0) { console.log('you died lol') } //to-do GameOver logic
         this.movement.handleInput()
         //const pos = { "X":`${this.x}`, "Y":`${this.y}` }
         //console.log(pos)
