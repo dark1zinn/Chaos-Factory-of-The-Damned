@@ -14,25 +14,25 @@ export default class Movement {
         //console.log(mouse)
         //keyboard:
         if (keys.w || keys.Space) {
-            this.eventManager.emit('jump act', { "X": `${this.player.x}`, "Y": `${this.player.y}` })
+            this.eventManager.emit('jump act', { x: this.player.x, y: this.player.y })
             this.player.jump();
         }
         if (keys.s) {
             this.player.moveDown();
         }
         if (keys.a) {
-            this.eventManager.emit('left act', { "X": `${this.player.x}`, "Y": `${this.player.y}` })
+            this.eventManager.emit('left act', { x: this.player.x, y: this.player.y })
             this.player.moveLeft();
         }
         if (keys.d) {
-            this.eventManager.emit('right act', { "X": `${this.player.x}`, "Y": `${this.player.y}` })
+            this.eventManager.emit('right act', { x: this.player.x, y: this.player.y })
             this.player.moveRight();
         }
 
         //mouse:
         if (mouse.left) {
-            this.eventManager.emit('left click', { "X": `${mouse.x}`, "y": `${mouse.y}` })
-            this.player.jump()
+            this.eventManager.emit('left click', { x: this.player.x, y: this.player.y })
+            //this.player.jump()
         }
     }
 }

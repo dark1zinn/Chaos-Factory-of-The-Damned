@@ -9,7 +9,7 @@ export default class BoundingBox {
     }
 
     isColliding(other) {
-        console.log(other); console.log(this)
+        console.log(other);
         return (
             this.x + this.width < other.x ||
             other.x + other.width < this.x ||
@@ -19,7 +19,8 @@ export default class BoundingBox {
     }
 
     box() {
-        return { "x":`${this.x}`, "y":`${this.y}`, "width":`${this.width}`, "height":`${this.height}` }
+        const box = { x: this.x, y: this.y, width: this.width, height: this.height }
+        return box
     }
 }
 

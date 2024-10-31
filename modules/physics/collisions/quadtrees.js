@@ -14,7 +14,7 @@ export default class Quadtree {
 
     // Método para inserir um objeto na quadtree
     insert(object) {
-        if (!this.boundary.contains({ "x": `${object.x}`, "y": `${object.y}` })) {
+        if (!this.boundary.contains({ x: object.x, y: object.y })) {
             console.log('returned')
             return;
         }
@@ -61,21 +61,23 @@ export default class Quadtree {
             this.southwest.insert(object);
         }
 
-        this.objects = []; // Limpando a lista de objetos do quadrante atual
+        this.objects = []; // cleaning object list of the actual quad
         this.divided = true;
     }
 
-    // Método para obter todos os objetos dentro de um determinado retângulo
+    // get all objects in a rectangle (range)
     query(range) {
+        console.log('2')
+        console.log(range)
         let found = []
         if (!this.boundary.intersects(range)) {
             return;
         } else if (!this.divided) {
             for (let object of this.objects) {
-                if (range.intersects(object.boundingBox.box)) {
-                    found.push(object);
+                if (range.intersects(object.boundingBox.box())) {
+                    found.push(object); console.log(object)
                 }
-            }
+            }; console.log(found); console.log('2')
             return found
         }else {
             found[northwest] = this.northwest.query(range);

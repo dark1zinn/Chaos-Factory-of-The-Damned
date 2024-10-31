@@ -11,17 +11,17 @@ export default class EntityManager {
         this.nextId = 0;
     }
 
-    async filter() {
+    filter() {
         this.types.entity = []; this.types.enemies = []; this.types.particle = [];
         this.objects.forEach(object => {if(object.type == 'entity'){ this.types.entity.push(object) }})
         this.objects.forEach(object => {if(object.role == 'enemy'){ this.types.enemies.push(object) }})
         this.objects.forEach(object => {if(object.type == 'particle'){ this.types.particle.push(object) }})
     }
 
-    async addEntity(entity) {
+    addEntity(entity) {
         entity.id = this.nextId++;
         this.objects.push(entity);
-        await this.filter()
+        this.filter()
     }
 
     removeEntity(id) {

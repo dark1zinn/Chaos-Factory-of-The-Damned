@@ -13,10 +13,10 @@ export default class Player extends Entity {
         //console.log('player colision')
         switch (object.role) {
             case ('enemy'): {
-                if (this.boundingBox.isColliding(object.boundingBox.box)) {
+                /* if (this.boundingBox.isColliding(object.boundingBox.box())) {
                     //this.health -= object.attack
                     //console.log('enemy attacked')
-                }
+                } */
                 break
             }
             case ('platform'): {
