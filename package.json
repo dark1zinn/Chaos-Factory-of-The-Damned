@@ -1,7 +1,7 @@
 {
   "name": "chaos-factory-of-the-damned",
   "private": true,
-  "version": "0.0.1-prot",
+  "version": "0.0.6-prot",
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vite",

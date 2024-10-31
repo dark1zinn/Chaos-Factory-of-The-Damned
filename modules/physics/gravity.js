@@ -15,8 +15,6 @@ export default class Gravity {
             // Verificar colisão com o chão (implementar conforme sua lógica de jogo)
             if (entity.y + entity.height >= this.canvas.height) {
                 entity.y = this.canvas.height - entity.height;
-                entity.velocityY = 0;
-                entity.jumping = false;
             }
         });
     }
