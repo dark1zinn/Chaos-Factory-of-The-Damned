@@ -1,3 +1,5 @@
+import BoundingBall from "../physics/collisions/boundingBall.ts";
+import BoundingBox from "../physics/collisions/boundingBox.ts";
 import Object from "./object.ts";
 
 export default class Entity extends Object {
@@ -5,8 +7,9 @@ export default class Entity extends Object {
     role: string;
     health: number;
     attack: number;
-    speed: number;
     jumpForce: number;
+    boundingBox: BoundingBox;
+    boundingBall: BoundingBall;
 
     constructor(x: number, y: number, role: string, name: string, tileSheet: string, size: number, health: number, attack: number, speed: number, jumpForce: number) {
         super('entity', name, x, y, tileSheet, size, size)
@@ -15,33 +18,41 @@ export default class Entity extends Object {
         this.role = role
         this.health = health
         this.attack = attack
-        this.speed = speed
         this.jumpForce = -jumpForce
+        this.boundingBox = new BoundingBox(x, y, this.width, this.height);
+        this.boundingBall = new BoundingBall( this.x, this.y, this.width / 2, speed, true)
     }
 
     update() {
         //console.log('entity')
+        //this.boundingBall.update()
+        this.x = this.boundingBall.x
+        this.y = this.boundingBall.y
     }
 
     Damage(dmg: number): void {
         if (this.role == 'particle') { return }
-        this.health -= dmg //do better math for this later + add defense for dmg reduction
+        //this.health -= dmg //do better math for this later + add defense for dmg reduction
         
     }
 
     jump() {
-        this.y += this.jumpForce
+        this.boundingBall.moveUp()
     }
-
+    
     moveDown() {
-        this.y += this.speed;
+        this.boundingBall.moveDown()
     }
-
+    
     moveLeft() {
-        this.x -= this.speed;
+        this.boundingBall.moveLeft()
+    }
+    
+    moveRight() {
+        this.boundingBall.moveRight()
     }
 
-    moveRight() {
-        this.x += this.speed;
+    resetVelocity(vel: string) {
+        this.boundingBall.resetVelocity(vel)
     }
 }

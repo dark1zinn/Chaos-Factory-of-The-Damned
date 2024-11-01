@@ -21,6 +21,7 @@ export default class EntityManager {
         entity.id = this.nextId++;
         this.objects.push(entity);
         this.filter()
+        entity.boundingBall.entity = entity; entity.boundingBall.id = entity.id;
     }
 
     removeEntity(id: number): void {
@@ -29,12 +30,14 @@ export default class EntityManager {
     }
 
     update(): void {
-        //console.log(this.objects)
-        //console.log(this.types)
         this.objects.forEach(entity => entity.update());
     }
 
-    draw(ctx: CanvasRenderingContext2D) {
-        this.objects.forEach(object => object.draw(ctx));
+    draw(ctx: CanvasRenderingContext2D): void {
+        //this.objects.forEach(object => object.draw(ctx));
+        for (const object of this.objects) {
+            object.draw(ctx);
+            object.boundingBall.drawBall(ctx)
+        };
     }
 }

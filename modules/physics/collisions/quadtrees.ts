@@ -85,9 +85,9 @@ export default class Quadtree {
         } else if (!this.divided) {
             for (let object of this.objects) {
                 if (range.intersects(object.boundingBox.box())) {
-                    found.push(object); console.log(object)
+                    found.push(object);
                 }
-            }; console.log(found);
+            };
             return found
         }else {
             found[northwest] = this.northwest.query(range);

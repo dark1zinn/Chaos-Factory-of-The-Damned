@@ -34,6 +34,12 @@ export default class Movement {
             this.eventManager.emit('right act', { x: this.player.x, y: this.player.y })
             this.player.moveRight();
         }
+        if (!keys.a && !keys.d) {
+            this.player.resetVelocity('acc_x')
+        }
+        if (!keys.w && !keys.s && !keys.Space) {
+            this.player.resetVelocity('acc_y')
+        }
 
         //mouse:
         if (mouse.left) {

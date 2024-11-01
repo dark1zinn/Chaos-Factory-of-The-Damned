@@ -1,4 +1,3 @@
-import BoundingBox from "../physics/collisions/boundingBox.ts";
 
 export default class Object {
     id: number;
@@ -11,7 +10,6 @@ export default class Object {
     x: number;
     y: number;
     tileSheet: HTMLImageElement;
-    boundingBox: BoundingBox;
 
     constructor(type: string, name: string, x: number, y: number, tileSheet: string, width: number, height: number) {
         this.id = 0; //initialy its 0 but the EntityManager will correct this later
@@ -25,7 +23,6 @@ export default class Object {
         this.y = y + (this.height / 2);
         this.tileSheet = new Image()
         this.tileSheet.src = tileSheet
-        this.boundingBox = new BoundingBox(x, y, this.width, this.height)
     }
 
     // object rendering logic
