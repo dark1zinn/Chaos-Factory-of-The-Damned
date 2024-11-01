@@ -14,7 +14,6 @@ export default class BoundingBox {
     }
 
     isColliding(other: { x: number, y: number, width: number, height: number }): boolean {
-        console.log(other);
         return (
             this.x + this.width < other.x ||
             other.x + other.width < this.x ||

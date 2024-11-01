@@ -15,7 +15,7 @@ export default class Player extends Entity {
     }
 
     handleCollision(object: Enemy) {
-        console.log(`player collided with ${object.name}`)
+        //console.log(`player collided with ${object.name}`)
     }
 
     update() {
