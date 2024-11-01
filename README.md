@@ -25,10 +25,11 @@ If you have incoutered any error/problem while trying to run the game, please co
 ### current errors/difficulties:
 
 - ...
-- for loop at <a href='./modules/physics/collisions/quadtrees.js'>quadtrees.js:76:13</a> used for pre-collision detection not working correctly for enemy entity, the for loop dont iters over the player entity which is in the objects array of the quadtree, but for the player entity it works fine.
+- typescript soft-errors (errors that doesn't prevent from the code running without issues, mostly type mismatches), at <a href='./modules//physics/collisions/collisionQuery.ts'>collisionQuery.ts:37:35</a> error says that potentialCollisions mey be null, at <a href='./modules/physics/collisions/quadtrees.ts'>quadtrees.ts:93:19-94:19-95:19-96:19</a> error about not yet disponible (non created) arrays, says "not possible to find array name", at <a href='./modules/tools/spawner.ts'>spawner.ts:40:47</a> error says "argument of type 'string | undefined' can't be atribued to parameter of type 'string'", the cause is the optional argument that is conditionally used.
+- for loop at <a href='./modules/physics/collisions/quadtrees.ts'>quadtrees.ts:76:13</a> used for pre-collision detection not working correctly for enemy entity, the for loop dont iters over the player entity which is in the objects array of the quadtree, but for the player entity it works fine.
 
-- box() method of class BoundingBox not providing info correctly at <a href='./modules/physics/collisions/boundingBox.js'>boundingBox.js:22:16</a>, which info is captured by itself for isColliding method at <a href='./modules/physics/collisions/collisionQuery.js'>collisionQuery.js:30:42</a>, theres no error on console. FIXED
-- foreach not working cause an undefined property on <a href='./modules/entityManager.js'>entityManager.js:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error. FIXED
+- box() method of class BoundingBox not providing info correctly at <a href='./modules/physics/collisions/boundingBox.ts'>boundingBox.ts:22:16</a>, which info is captured by itself for isColliding method at <a href='./modules/physics/collisions/collisionQuery.ts'>collisionQuery.ts:30:42</a>, theres no error on console. FIXED
+- foreach not working cause an undefined property on <a href='./modules/entityManager.ts'>entityManager.ts:20:57</a>, see a <a href='./to-do media/Captura de tela 2024-10-29 180743.png'>screenshot</a> of the error. FIXED
 
 ### tested:
 
