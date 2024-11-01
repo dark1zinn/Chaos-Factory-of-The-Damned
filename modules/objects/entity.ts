@@ -1,7 +1,14 @@
-import Object from "./object";
+import Object from "./object.ts";
 
 export default class Entity extends Object {
-    constructor(x, y, role, name, tileSheet, size, health, attack, speed, jumpForce) {
+    id: number;
+    role: string;
+    health: number;
+    attack: number;
+    speed: number;
+    jumpForce: number;
+
+    constructor(x: number, y: number, role: string, name: string, tileSheet: string, size: number, health: number, attack: number, speed: number, jumpForce: number) {
         super('entity', name, x, y, tileSheet, size, size)
 
         this.id = 0
@@ -16,7 +23,7 @@ export default class Entity extends Object {
         //console.log('entity')
     }
 
-    Damage(dmg) {
+    Damage(dmg: number): void {
         if (this.role == 'particle') { return }
         this.health -= dmg //do better math for this later + add defense for dmg reduction
         

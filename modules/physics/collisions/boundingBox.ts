@@ -1,14 +1,19 @@
 
 
 export default class BoundingBox {
-    constructor(x, y, width, height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+
+    constructor(x: number, y: number, width: number, height: number) {
+        this.x = x-10;
+        this.y = y-10;
+        this.width = width+10;
+        this.height = height+10;
     }
 
-    isColliding(other) {
+    isColliding(other: { x: number, y: number, width: number, height: number }): boolean {
         console.log(other);
         return (
             this.x + this.width < other.x ||

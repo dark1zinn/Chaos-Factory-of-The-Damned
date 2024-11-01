@@ -1,14 +1,20 @@
-import InputManager from "../managers/inputManager";
+import InputManager from "../managers/inputManager.ts";
+import EventManager from "../managers/eventManager.ts";
+import Player from "./player";
 
 export default class Movement {
-    constructor(player, eventManager) {
+    player: Player;
+    eventManager: EventManager;
+    inputManager: InputManager;
+
+    constructor(player: Player, eventManager: EventManager) {
         this.player = player;
         this.eventManager = eventManager;
-        this.InputManager = new InputManager()
+        this.inputManager = new InputManager()
     }
 
-    handleInput() {
-        const inputState = this.InputManager.getInputState()
+    handleInput(): void {
+        const inputState = this.inputManager.getInputState()
         const { keys, mouse } = inputState
         //console.log(keys)
         //console.log(mouse)

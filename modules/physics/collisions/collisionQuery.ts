@@ -1,8 +1,17 @@
-import Quadtree from "./quadtrees";
+import Quadtree from "./quadtrees.ts";
 import Boundary from "./boundary";
+import EventManager from "../../managers/eventManager";
+import Player from "../../player/player";
+import Enemy from "../../objects/entity/enemy";
+import Particle from "../../objects/other/particle.ts";
 
 export default class CollisionQuery {
-    constructor(canvas, eventManager, objects) {
+    canvas: HTMLCanvasElement;
+    eventManager: EventManager;
+    objects: (Player | Enemy | Particle)[];
+    quadtree: Quadtree;
+
+    constructor(canvas: HTMLCanvasElement, eventManager: EventManager, objects: Player[] | Enemy[]) {
         this.canvas = canvas
         this.objects = objects; //this should be an array with the objects, also they should have .x .y and .width .height
         this.eventManager = eventManager
@@ -20,12 +29,12 @@ export default class CollisionQuery {
         for (const collider of this.objects) {
             // object collision with other objects
             console.log('1')
-            const range = new Boundary(collider.x - 5, collider.y - 5, collider.width + 5, collider.width + 5);
+            //const range = new Boundary(collider.x - 5, collider.y - 5, collider.width + 5, collider.width + 5);
             console.log(collider);
             //console.log(range);
-            let potentialCollisions = this.quadtree.query(range);
+            let potentialCollisions = this.quadtree.query(this.quadtree.boundary);
             console.log({'before':potentialCollisions})
-            //potentialCollisions = potentialCollisions.filter(potential => potential.id !== collider.id)
+            potentialCollisions = potentialCollisions.filter(potential => potential.id !== collider.id)
             //console.log({'after':potentialCollisions})
             if (potentialCollisions.length != 0) {
                 for (const object of potentialCollisions) {

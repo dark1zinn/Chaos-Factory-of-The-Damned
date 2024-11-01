@@ -1,9 +1,11 @@
 export default class EventManager {
+    events: any;
+
     constructor() {
         this.events = {};
     }
 
-    subscribe(eventName, callback) {
+    subscribe(eventName: string, callback: any) {
         if (!this.events[eventName]) {
             this.events[eventName] = [];
         }
@@ -11,13 +13,13 @@ export default class EventManager {
 
     }
 
-    subscribeAll(callback) {
+    subscribeAll(callback: any) {
         for (const eventName in this.events) {
             this.subscribe(eventName, callback);
         }
     }
 
-    unsubscribe(eventName, callback) {
+    unsubscribe(eventName: string, callback: any) {
         if (this.events[eventName]) {
             const index = this.events[eventName].indexOf(callback);
             if (index !== -1) {
@@ -27,11 +29,14 @@ export default class EventManager {
         }
     }
 
-    emit(eventName, data) {
+    emit(eventName: string, data: any) {
         if (this.events[eventName]) {
-            this.events[eventName].forEach(callback => {
+            for (const callback of this.events[eventName]) {
+                callback(data)
+            }
+            /* this.events[eventName].forEach(callback => {
                 callback(data);
-            });
+            }); */
         }
     }
 }

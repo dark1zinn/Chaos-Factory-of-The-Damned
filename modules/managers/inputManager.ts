@@ -1,6 +1,9 @@
 
 
 export default class InputManager {
+    keys: any;
+    mouse: { x: number, y: number, left: boolean, right: boolean };
+
     constructor() {
         this.keys = {};
         this.mouse = { x: 0, y: 0, left: false, right: false };
@@ -37,7 +40,7 @@ export default class InputManager {
     }
 
     // Method to get the current input state
-    getInputState() {
+    getInputState(): { keys: any, mouse: { x: number, y: number, left: boolean, right: boolean } } {
         return {
             keys: this.keys,
             mouse: this.mouse,
